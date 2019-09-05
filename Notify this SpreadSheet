@@ -1,0 +1,15 @@
+var Users = ["************","**********"];
+function notify() {
+  var fileId = SpreadsheetApp.getActive().getId();
+  var file = DriveApp.getFileById(fileId);
+  var title = "[VnStock] - Cập nhật thông tin và Phân tích thị trường";
+  var body = "Đường dẫn: " + file.getUrl();
+  Logger.log(Users);
+  Logger.log(Users.length);
+  Logger.log(Users[0]);
+  
+  for(var i = 0; i < Users.length; i++){
+    GmailApp.sendEmail(Users[i], title, body, {attachments: [file]});
+    //GmailApp.sendEmail(Users[i], title, body, {attachments: [file]});
+  }
+}
